@@ -10,9 +10,9 @@
 
 function returnObjectLiteral() {
   //your code here
-  return ({ type: 'Goldfish', brand: 'Pepperidge Farm', flavor: 'Cheddar', count: 2000});
+  return ({type: 'Goldfish', brand: 'Pepperidge Farm', flavor: 'Cheddar', count: 2000}); //Modify ONLY this line
   //end your code
-} 
+}
 
 /**
 * Create a constructor function for a `MessageLog` object.
@@ -38,40 +38,39 @@ function returnObjectLiteral() {
 */
 
 //your code here
-function MessageLog(user){
-  this.user = user;
-  this.msgSentTotal = 0;
-  this.msgRecTotal = 0;
-  this.sentMessages = [];
-  this.recMessage = "";
-  this.logMessage = function(messageText, direction){ 
-    if (direction === 0){
-      if(this.sentMessages.length >= 5) {
-      	this.sentMessages.pop();		  //pop if too big
-      }						  //sent
-      this.sentMessages.unshift(messageText);     //add msg to back of queue
-      this.msgSentTotal++;                        //inc total sent
-    }
-    else{		                          //received
-      this.recMessage = messageText;                  //storing received msg
-      this.msgRecTotal++;                         //inc rec msg
-    }
-  }
-  this.getSentMessage = function(n){
-    
-      return this.sentMessages[n];                //returning messages 
-    }
-  }
-  this.totalSent = function(){
-		return this.msgSentTotal;
-	};
-
-	this.totalReceived = function(){
-		return this.msgRecTotal;
+function MessageLog(user) {
+	this.user = user;
+	this.sent = 0;
+	this.received = 0;
+	this.sentArr = [];
+	this.lastReceived = "";
+	
+	this.logMessage = function(messageText, direction) {
+		if(direction === 0) {	
+			this.sent++;
+			if(this.sentArr.length >= 5) {
+				this.sentArr.pop();
+			}
+			this.sentArr.unshift(messageText);
+		} else {
+			this.received++;
+			this.lastReceived = messageText;
+		}
+	}
+	
+	this.getSentMessage = function (n) {
+		return this.sentArr[n];
+	}
+	
+	this.totalSent = function () {
+			return this.sent;
+	}
+	
+	this.totalReceived = function () {
+		return this.received;
 	}
 }
-
-//end your code
+	//end your code
 
 /**
 * Add a method to the MessageLog prototype:
@@ -79,8 +78,9 @@ function MessageLog(user){
 * received.
 */
 //your code here
-MessageLog.prototype.lastReceivedMessage = function(){
-	return this.recMessage;
+MessageLog.prototype.lastReceivedMessage = function() {
+	return this.lastReceived;
+}
 //end your code
 
 /**
@@ -91,7 +91,8 @@ MessageLog.prototype.lastReceivedMessage = function(){
 
 //your code here
 var myLog = new MessageLog("BlackHatGuy");
-myLog.logMessage("foo",1);
-myLog.logMessage("bar",1);
-myLog.logMessage("baz",1);
+myLog.logMessage("foo", 1);
+myLog.logMessage("bar", 1);
+myLog.logMessage("baz", 1);
 //end your code
+
