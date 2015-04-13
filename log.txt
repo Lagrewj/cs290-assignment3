@@ -1,1 +1,10 @@
-You log goes in this  file.
+Start: Mon 13 Apr 2015 09:00:00 -0700
+End: Mon 13 Apr 2015 09:34:00 -0700 
+Tasks: Cloned rep from TA github, started JS review, scope of work
+Start: Mon 13 Apr 2015 10:00:00 -0700
+End: Mon 13 Apr 2015 11:49:00 -0700 
+Tasks: Finished functions, variables and objects, initial testing, having problems with objects
+Start: Mon 13 Apr 2015 14:00:00 -0700
+End: Mon 13 Apr 2015 15:03:00 -0700 
+Tasks: Corrected objects file and passed all testing, learned how to do log file in powershell
+
