@@ -39,20 +39,20 @@ function returnObjectLiteral() {
 
 //your code here
 function MessageLog(user) {
-	this.user = user;
+	this.user = user;					//declaring variables
 	this.sent = 0;
 	this.received = 0;
 	this.sentArr = [];
 	this.lastReceived = "";
 	
-	this.logMessage = function(messageText, direction) {
-		if(direction === 0) {	
-			this.sent++;
-			if(this.sentArr.length >= 5) {
+	this.logMessage = function(messageText, direction) {	//function to log a message
+		if(direction === 0) {				//sent
+			this.sent++;				//incremend sent
+			if(this.sentArr.length >= 5) {		//if more than 5 messages, then remove one
 				this.sentArr.pop();
 			}
-			this.sentArr.unshift(messageText);
-		} else {
+			this.sentArr.unshift(messageText);	//arr.unshift([element1[, ...[, elementN]]])
+		} else {					//received
 			this.received++;
 			this.lastReceived = messageText;
 		}
