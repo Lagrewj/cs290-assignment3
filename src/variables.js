@@ -13,8 +13,10 @@ function variableModification(a) {
   var plus5;
   var asString;
   var yourNumberIs;
-  //your code here
-
+  //your code here                         //checking type of a
+  asString = String(a);                    //casting string
+  yourNumberIs = "Your Number is " + a ;
+  plus5 = parseInt(a) + 5;                 //parsing int as backup
   //end your code
   return [plus5, asString, yourNumberIs, a];
 }
@@ -29,7 +31,12 @@ false otherwise
 */
 function isString(b) {
   //your code here
-  return undefined;
+  if (typeof(b) == "string"){         //now lets check the type of b
+    return true;                      //if string literal return true
+  }
+  else{
+    return false;
+  }
   //end your code
 }
 
@@ -42,6 +49,11 @@ return true if c is null, false otherwise
 */
 function isNull(c) {
   //your code here
-  return undefined;
+    if (c === null){              //checking c, if null return true
+    return true;
+  }
+  else{
+    return false;
+  }
   //end your code
 }
