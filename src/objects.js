@@ -44,19 +44,22 @@ function MessageLog(user){
   this.msgRecTotal = 0;
   this.sentMessages = [];
   this.recMessage = "";
-  this.logMessage = function(message, direction){ 
-    if (direction === 0){                         //sent
-      this.sentMessages.unshift(message);         //add msg to back of queue
+  this.logMessage = function(messageText, direction){ 
+    if (direction === 0){
+      if(this.sentMessages.length >= 5) {
+      	this.sentMessages.pop();		  //pop if too big
+      }						  //sent
+      this.sentMessages.unshift(messageText);     //add msg to back of queue
       this.msgSentTotal++;                        //inc total sent
     }
-    else if (direction === 1){                    //received
-      this.recMessage = message;                  //storing received msg
+    else{		                          //received
+      this.recMessage = messageText;                  //storing received msg
       this.msgRecTotal++;                         //inc rec msg
     }
   }
   this.getSentMessage = function(n){
-    if (n >= 0 && n < 5){
-      return this.sentMessages[n];                //returning messages 0 - 4
+    
+      return this.sentMessages[n];                //returning messages 
     }
   }
   this.totalSent = function(){
